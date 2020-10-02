@@ -45,21 +45,6 @@
         <img :src="`http://openweathermap.org/img/wn/${ weatherData.weather[0].icon }@2x.png`">
       </div>
     </template>
-    <template v-else>
-      <div class="col column text-center text-white">
-         <div class="col text-h2 text-weight-thin">
-           Quasar<br>Weather
-         </div>
-         <q-btn
-         @click="getLocation"
-           class="col"
-           flat>
-           <q-icon left size="3em"
-           name="my_location "/>
-           <div> Encontrar minha localização</div>
-          </q-btn>
-      </div>
-    </template>
     <div class="col city">
     </div>
   </q-page>
@@ -80,6 +65,10 @@ export default {
     }
   },
 
+  mounted () {
+    this.getLocation()
+  },
+
   methods: {
     getLocation () {
       if (this.$q.platform.is.electron) {
@@ -96,13 +85,6 @@ export default {
           this.getWeatherByCoords()
         })
       }
-    },
-
-    mounted () {
-      axios
-        .get(`${this.apiUrl}?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}&units=metric&lang=pt_br`)
-        .then(response => (this.weatherData = response.data))
-      console.log(this.weatherData)
     },
 
     getWeatherByCoords () {
