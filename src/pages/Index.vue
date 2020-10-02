@@ -40,9 +40,9 @@
         <span class=" text-h4 relative-position degree">&deg;</span>
         </div>
         <div class="text-h6 text-weight-light">
-          <span>H: {{ Math.round(weatherData.main.temp_max)}}&deg;</span>
-          <span>  -  </span>
           <span>L: {{ Math.round(weatherData.main.temp_min)}}&deg;</span>
+          <span>  -  </span>
+          <span>H: {{ Math.round(weatherData.main.temp_max)}}&deg;</span>
         </div>
         <div class="col text-center">
           <img :src="`http://openweathermap.org/img/wn/${ weatherData.weather[0].icon }@2x.png`">
